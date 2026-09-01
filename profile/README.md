@@ -33,6 +33,7 @@ flowchart LR
 | [**sustina-web**](https://github.com/sustina-nrgpix/sustina-web) | The browser surface — the public site and the authenticated ESG management workspace |
 | [**sustina-backoffice**](https://github.com/sustina-nrgpix/sustina-backoffice) | The restricted back office — administration console, access assignment and reference-data management |
 | [**sustina-cloud**](https://github.com/sustina-nrgpix/sustina-cloud) | The cloud landscape — AWS Lambda business logic, DB-as-a-Service middleware, the BFF and the external factor APIs |
+| [**sustina-knowledge-base**](https://github.com/sustina-nrgpix/sustina-knowledge-base) | The knowledge base — the curated corpus behind Sustina's on-premise, LLM-driven assistant |
 
 ## Dig deeper
 
@@ -50,6 +51,29 @@ flowchart LR
 
 > Capabilities are documented as *As a / I want / So that* briefs with conceptual
 > diagrams — what each part does and the value it delivers, not its internals.
+
+## Knowledge Base
+
+Sustina runs its **own on-premise, LLM-driven knowledge base**. The in-product
+assistant answers questions — reporting rules, data standards, how a feature
+works — from a model that runs **inside Sustina's own boundary** and draws
+**only** on vetted internal material. Client data, proprietary operational detail
+and supplier records are never sent to an external model, and every answer
+**cites the source** it came from.
+
+```mermaid
+flowchart LR
+    KB["KNOWLEDGE BASE<br/>curated articles"] --> IDX["ON-PREM INDEX<br/>passages + embeddings"]
+    IDX --> LLM(("ON-PREMISE LLM<br/>retrieval-augmented"))
+    LLM --> U["USER<br/>answer + citation"]
+    classDef n fill:#BEC5AD,stroke:#3B5249,color:#26332A,stroke-width:2px;
+    classDef c fill:#46755E,stroke:#2E4A3B,color:#FFFFFF,stroke-width:4px;
+    class KB,IDX,U n; class LLM c;
+```
+
+The curated articles behind it are versioned in
+[**sustina-knowledge-base**](https://github.com/sustina-nrgpix/sustina-knowledge-base) —
+each a short, standalone reference with a permanent KB number.
 
 ## Data protection
 
