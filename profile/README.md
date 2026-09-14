@@ -85,4 +85,4 @@ through the **DB-as-a-Service** layer; developers never touch the databases
 directly.
 
 ---
-Copyright © 2024–2026 Neill Watcyn-Palmer. All rights reserved. Proprietary — see LICENSE.
+Copyright © 2024–2026 Neil Watcyn-Palmer. All rights reserved. Proprietary — see LICENSE.
