@@ -26,26 +26,30 @@ flowchart LR
 
 ## The platform, by surface
 
+Consolidated 2026-09 from six separate repos (`sustina-web`, `sustina-backoffice`,
+`sustina-security`, `sustina-cloud`, `sustina-knowledge-base`,
+`sustina-data-modelling`) plus the personal `SUSTINA_CAB` certification repo,
+onto five: four functional surfaces and a fifth for cross-surface design.
+
 | Surface | What it is |
 |---|---|
-| [**sustina-data-modelling**](https://github.com/sustina-nrgpix/sustina-data-modelling) | The data foundation — DSGAL-first database, the data classes, reference data and the Scope 1/2/3 emissions model |
-| [**sustina-security**](https://github.com/sustina-nrgpix/sustina-security) | Data Security, Governance, Access &amp; Lineage — role model, row-level security, audit, and the single authorised path to data |
-| [**sustina-web**](https://github.com/sustina-nrgpix/sustina-web) | The browser surface — the public site and the authenticated ESG management workspace |
-| [**sustina-backoffice**](https://github.com/sustina-nrgpix/sustina-backoffice) | The restricted back office — administration console, access assignment and reference-data management |
-| [**sustina-cloud**](https://github.com/sustina-nrgpix/sustina-cloud) | The cloud landscape — AWS Lambda business logic, DB-as-a-Service middleware, the BFF and the external factor APIs |
-| [**sustina-knowledge-base**](https://github.com/sustina-nrgpix/sustina-knowledge-base) | The knowledge base — the curated corpus behind Sustina's on-premise, LLM-driven assistant |
+| [**SST-DataModel**](https://github.com/sustina-nrgpix/SST-DataModel) | The data foundation — DSGAL-first database, the data classes, reference data and the Scope 1/2/3 emissions model |
+| [**SST-FrontOffice**](https://github.com/sustina-nrgpix/SST-FrontOffice) | The browser surface — the public site and the authenticated ESG management workspace |
+| [**SST-BackOffice**](https://github.com/sustina-nrgpix/SST-BackOffice) | The restricted back office — administration console, access assignment, reference-data management, DSGAL security model, on-premise knowledge-base assistant, compliance |
+| [**SST-APIIntegrations**](https://github.com/sustina-nrgpix/SST-APIIntegrations) | The cloud landscape — AWS Lambda business logic, DB-as-a-Service middleware, the BFF, the external factor APIs, and the data-ingestion/normalisation pipelines |
+| [**SST-ArchitectureAndDesign**](https://github.com/sustina-nrgpix/SST-ArchitectureAndDesign) | Cross-surface architecture and the domain-master design docs that span more than one surface |
 
 ## Dig deeper
 
 - **DSGAL-first foundation** — why strong controls go in *before* any application
-  table exists: [sustina-data-modelling](https://github.com/sustina-nrgpix/sustina-data-modelling)
+  table exists: [SST-DataModel](https://github.com/sustina-nrgpix/SST-DataModel)
 - **Data classes** — Organization, Site, Meter, Asset, EmissionFactor,
   FactorApplication, DataQualityAssessment and ~25 more
 - **Architecture** — React → thin ASP.NET Core proxy → C# AWS Lambda, with all
   secrets and SQL kept behind the Lambda boundary:
-  [sustina-cloud](https://github.com/sustina-nrgpix/sustina-cloud)
+  [SST-APIIntegrations](https://github.com/sustina-nrgpix/SST-APIIntegrations)
 - **Role-level security & GDPR** — default-deny, centralised roles, row-level
-  security on every governed table: [sustina-security](https://github.com/sustina-nrgpix/sustina-security)
+  security on every governed table: [SST-BackOffice](https://github.com/sustina-nrgpix/SST-BackOffice)
 - **Python standard** — every script starts from the shared template; proprietary
   material never touches Colab; functions run on AWS Lambda
 
@@ -72,7 +76,7 @@ flowchart LR
 ```
 
 The curated articles behind it are versioned in
-[**sustina-knowledge-base**](https://github.com/sustina-nrgpix/sustina-knowledge-base) —
+[**SST-BackOffice/knowledge-base**](https://github.com/sustina-nrgpix/SST-BackOffice/tree/main/knowledge-base) —
 each a short, standalone reference with a permanent KB number.
 
 ## Data protection
